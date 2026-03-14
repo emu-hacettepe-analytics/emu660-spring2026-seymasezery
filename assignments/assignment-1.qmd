@@ -22,8 +22,9 @@ IQR = IQR(x),
 minimum = min(x), 
 maximum = max(x) 
 ) 
-print(result)
+return(result)
 }
+
 ## (b)
 
 {{< https://www.youtube.com/watch?v=cUPtQEyaswM&t >}}
