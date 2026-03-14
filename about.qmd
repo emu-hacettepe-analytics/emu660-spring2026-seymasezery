@@ -5,7 +5,7 @@ sidebar: false
 
 My name is Seyma. I am interested in data analytics and data visualization.
 
-![](/Users/seymasezer/Downloads/221238.jpg){fig-align="center"}
+![](images/6D3E2FC7-EC87-445B-BC04-A91CF6752F6D-01.jpg){fig-align="center" width="4.2 cm" height="5.9cm"}
 
 # Education
 
@@ -14,11 +14,11 @@ My name is Seyma. I am interested in data analytics and data visualization.
 
 ## Employements
 
-1.  Turkish Aerospace, Quality Systems Engineer 2018-2022
+1.  Aselsan, Senior Specialist Engineer, 2025-ongoing.
 
 2.  Meteksan Defence, Senior Project Quality Management Engineer, 2022-2025
 
-3.  Aselsan, Semior Specialist Engineer, 2025-ongoing.
+3. Turkish Aerospace, Quality Systems Engineer 2018-2022  
 
 ## Internships
 
@@ -29,4 +29,3 @@ My name is Seyma. I am interested in data analytics and data visualization.
 3.  Intern at ASELSAN, Ankara/Turkey June 2017-July 2017
 
 4.  Candidate Engineer at Turkish Aerospace, Ankara/Turkey March 2018-July 2018
-
