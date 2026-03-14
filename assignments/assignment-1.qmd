@@ -24,6 +24,7 @@ maximum = max(x)
 ) 
 return(result)
 }
+compute_stats(mtcars$mpg)
 
 ## (b)
 
