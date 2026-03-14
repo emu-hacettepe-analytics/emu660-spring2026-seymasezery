@@ -12,6 +12,13 @@ My first assignment has two parts.
 
 ## (a)
 
+data(mtcars)
+compute_stats <- function(x) 
+{ 
+list( mean = mean(x), median = median(x), variance = var(x), IQR = IQR(x), minimum = min(x), maximum = max(x) ) 
+}
 ## (b)
 
 {{< https://www.youtube.com/watch?v=cUPtQEyaswM&t >}}
+
+
