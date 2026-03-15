@@ -2,7 +2,6 @@
 title: "Assignment 1"
 ---
 
-# Assignment 1
 My first assignment has four parts.
 
 ## (a)
@@ -156,3 +155,4 @@ print(sum(is.na(new_data)))
 print(anyNA(new_data))
 ```
 
+##ChatGPT and Gemini was consulted for guidance on implementing loops, using functions. All outputs produced by the AI tool were carefully reviewed, tested, and updated to ensure correctness.
