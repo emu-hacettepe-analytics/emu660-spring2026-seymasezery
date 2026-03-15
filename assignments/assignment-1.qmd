@@ -130,8 +130,6 @@ head(sort_na, 8)
 new_data<-polls_us_election_2016
 numeric_replacement<-my_birth_year+k
 character_replacement<-paste0(my_first, "_", k)
-cat(numeric_replacement, "\n")
-cat(character_replacement, "\n\n")
 print(numeric_replacement)
 print(character_replacement)
 for(i in 1:ncol(new_data)) {
@@ -154,7 +152,6 @@ if (k %% 2 == 0) {
 }
 ```
 ```{r}
-sum(is.na(new_data))
 print(sum(is.na(new_data)))
 print(anyNA(new_data))
 ```
