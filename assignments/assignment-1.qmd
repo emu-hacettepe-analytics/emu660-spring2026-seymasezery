@@ -21,8 +21,10 @@ Finally, there was a really important emphasis: everything starts with a clear d
 
 ## (b)
 ##Open-ended question
+
 Based on the speaker’s perspective, why is building a mathematically "perfect" model insufficient for the ultimate success of an Operations Research (OR) or AI project? Explain by mentioning the additional factors that influence project success.
 ##Answer 
+
 According to the video, a great model is only one part of the solution. For a project to be truly successful, the following elements must be integrated:
 
 Problem Definition: Everything must start with a clear and correct definition of the problem; otherwise, the model solves the wrong issue.
@@ -32,6 +34,7 @@ Implementation and UI: How the model reaches the end-user is critical. The quali
 KPIs and Integration: The success of the model must be measured against defined Key Performance Indicators (KPIs) that align with business goals. Without a bridge between the model's output and real-world application, its technical excellence provides little value.
 
 ##Multiple-choice question
+
 A supply chain manager monitors daily inventory levels on a dashboard (I), then uses historical data to generate a demand forecast for the next quarter (II), and finally applies an optimization model to determine the ideal safety stock levels to minimize costs (III).
 
 According to the classification mentioned in the video, which of the following correctly identifies these analytical stages?
@@ -40,6 +43,7 @@ B) I: Descriptive, II: Predictive, III: Prescriptive
 C) I: Descriptive, II: Prescriptive, III: Predictive
 D) I: Diagnostic, II: Predictive, III: Descriptive
 ##Answer
+
 B: Monitoring current/past data is Descriptive; forecasting future trends is Predictive; and using mathematical models to determine the best course of action (optimization) is Prescriptive analysis.
 
 ## (c)
