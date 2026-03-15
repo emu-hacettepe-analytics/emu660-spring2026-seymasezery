@@ -3,12 +3,45 @@ title: "Assignment 1"
 ---
 
 # Assignment 1
+My first assignment has four parts.
 
-```{r}
-1 + 1
-```
+## (a)
+I choosed to watch and analyze "Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir"
 
-My first assignment has two parts.
+The video basically talks about why the world of OR (Operations Research) has been shifting so much towards AI and Machine Learning lately. The speaker explains this by looking at the value and complexity dimensions of data and breaks it down into four main types of analysis.
+
+For instance, in Descriptive Analysis, the main goal is to strengthen efficiency; that's why data mining and visualization tools are at the forefront here. In the Diagnostic part, we’re looking for the answer to "Why did it happen?" and we focus on things like hypothesis testing and clustering to diagnose the current situation.
+
+The most interesting part is Predictive Analytics because everyone is curious about what will happen in the future, so naturally, Machine Learning steps in here. Then there’s Prescriptive Analysis, which you can think of as "writing a prescription." To give the right prescription, optimization and mathematical modeling come into play heavily.
+
+The speaker gives a great supply chain example: tracking daily inventory levels on a chart (Descriptive), then doing a demand forecast (Predictive), and finally performing safety stock optimization based on that data (Prescriptive) actually works like a chain reaction.
+
+It also mentions how hard it is to see this "big picture" and connect the dots between different classes during university years. That’s why, as students, it’s crucial to dive into different areas and gain a more high-level perspective to realize the importance of the education we're getting.
+
+Finally, there was a really important emphasis: everything starts with a clear definition of the problem. If you don’t define the problem correctly, the rest won't go well. Also, just building a great model isn't enough; how that model reaches the end-user, the defined KPIs, and even the UI (user interface) quality directly impact the success of the project.
+
+## (b)
+##Open-ended question
+Based on the speaker’s perspective, why is building a mathematically "perfect" model insufficient for the ultimate success of an Operations Research (OR) or AI project? Explain by mentioning the additional factors that influence project success.
+##Answer 
+According to the video, a great model is only one part of the solution. For a project to be truly successful, the following elements must be integrated:
+
+Problem Definition: Everything must start with a clear and correct definition of the problem; otherwise, the model solves the wrong issue.
+
+Implementation and UI: How the model reaches the end-user is critical. The quality of the User Interface (UI) and the ease of use directly impact whether the model is actually adopted.
+
+KPIs and Integration: The success of the model must be measured against defined Key Performance Indicators (KPIs) that align with business goals. Without a bridge between the model's output and real-world application, its technical excellence provides little value.
+
+##Multiple-choice question
+A supply chain manager monitors daily inventory levels on a dashboard (I), then uses historical data to generate a demand forecast for the next quarter (II), and finally applies an optimization model to determine the ideal safety stock levels to minimize costs (III).
+
+According to the classification mentioned in the video, which of the following correctly identifies these analytical stages?
+A) I: Diagnostic, II: Predictive, III: Prescriptive
+B) I: Descriptive, II: Predictive, III: Prescriptive
+C) I: Descriptive, II: Prescriptive, III: Predictive
+D) I: Diagnostic, II: Predictive, III: Descriptive
+##Answer
+B: Monitoring current/past data is Descriptive; forecasting future trends is Predictive; and using mathematical models to determine the best course of action (optimization) is Prescriptive analysis.
 
 ## (c)
 ## Write a Custom Summary Function
@@ -59,24 +92,67 @@ apply(mtcars, 2, compute_stats)
 ```
 ## (d)
 ```{r}
-#install.packages("dslabs")
+install.packages("dslabs", repos = "https://cran.rstudio.com/")
 ```
 ```{r}
 library(dslabs)
 data(polls_us_election_2016)
 head(polls_us_election_2016)
 str(polls_us_election_2016)
+```
+```{r}
 my_first<-"Seyma"
 my_birth_year<-1995
 k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+print(k)
 ```
+
 ```{r}
-display_rows <- function(data, k) {
+display_rows <- function(polls_us_election_2016, k) {
   if (k %% 2 == 0) {
-    return(head(data, k))
+    return(head(polls_us_election_2016, k))
   } else {
-    return(tail(data, k))
+    return(tail(dpolls_us_election_2016, k))
   }
 }
+```
+```{r}
+total_na <- sum(is.na(polls_us_election_2016))
+total_na
+na_column <- colSums(is.na(polls_us_election_2016))
+sort_na <- sort(na_column, decreasing = TRUE)
+head(sort_na, 8)
+```
+```{r}
+new_data<-polls_us_election_2016
+numeric_replacement<-my_birth_year+k
+character_replacement<-paste0(my_first, "_", k)
+cat(numeric_replacement, "\n")
+cat(character_replacement, "\n\n")
+print(numeric_replacement)
+print(character_replacement)
+for(i in 1:ncol(new_data)) {
+  if(is.numeric(new_data[[i]])) {
+    new_data[[i]][is.na(new_data[[i]])] <- numeric_replacement
+  } else if(is.character(new_data[[i]]) || is.factor(new_data[[i]])) {
+    if(is.factor(new_data[[i]])) {
+      levels(new_data[[i]]) <- c(levels(new_data[[i]]), character_replacement)
+    }
+    new_data[[i]][is.na(new_data[[i]])] <- character_replacement
+  }
+}
+
+if (k %% 2 == 0) {
+  head(new_data, k)
+  print(head(new_data, k))
+} else {
+  tail(new_data, k)
+  print(tail(new_data, k))
+}
+```
+```{r}
+sum(is.na(new_data))
+print(sum(is.na(new_data)))
+print(anyNA(new_data))
 ```
 
