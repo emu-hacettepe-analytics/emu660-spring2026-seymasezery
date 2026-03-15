@@ -88,14 +88,14 @@
     "href": "assignments/assignment-1.html",
     "title": "Assignment 1",
     "section": "",
-    "text": "1 + 1\n\n[1] 2\n\n\nMy first assignment has two parts.\n\n\ndata(mtcars) compute_stats &lt;- function(x) { result&lt;-list( mean = mean(x), median = median(x), variance = var(x), IQR = IQR(x), minimum = min(x), maximum = max(x) ) return(result) } compute_stats(mtcars$mpg)\n\n\n\n{{&lt; https://www.youtube.com/watch?v=cUPtQEyaswM&t &gt;}}",
+    "text": "1 + 1\n\n[1] 2\n\n\nMy first assignment has two parts.\n\n\n\n\n\ndata(mtcars) compute_stats &lt;- function(x) { result&lt;-list( mean = mean(x), median = median(x), variance = var(x), IQR = IQR(x), minimum = min(x), maximum = max(x) ) return(result) } compute_stats(mtcars$mpg)\n\n\n\nstr(mtcars) colnames(mtcars) numeric_cols &lt;- sapply(mtcars, is.numeric) numeric_names &lt;- colnames(mtcars)[numeric_cols] for (col in numeric_names) {\ncat(“Column:”, col, “”) stats &lt;- compute_stats(mtcars[[col]]) print(stats) }",
     "crumbs": [
       "Assignment 1"
     ]
   },
   {
-    "objectID": "assignments/assignment-1.html#a",
-    "href": "assignments/assignment-1.html#a",
+    "objectID": "assignments/assignment-1.html#write-a-custom-summary-function",
+    "href": "assignments/assignment-1.html#write-a-custom-summary-function",
     "title": "Assignment 1",
     "section": "",
     "text": "data(mtcars) compute_stats &lt;- function(x) { result&lt;-list( mean = mean(x), median = median(x), variance = var(x), IQR = IQR(x), minimum = min(x), maximum = max(x) ) return(result) } compute_stats(mtcars$mpg)",
@@ -104,11 +104,11 @@
     ]
   },
   {
-    "objectID": "assignments/assignment-1.html#b",
-    "href": "assignments/assignment-1.html#b",
+    "objectID": "assignments/assignment-1.html#applying-the-function-using-a-loop",
+    "href": "assignments/assignment-1.html#applying-the-function-using-a-loop",
     "title": "Assignment 1",
     "section": "",
-    "text": "{{&lt; https://www.youtube.com/watch?v=cUPtQEyaswM&t &gt;}}",
+    "text": "str(mtcars) colnames(mtcars) numeric_cols &lt;- sapply(mtcars, is.numeric) numeric_names &lt;- colnames(mtcars)[numeric_cols] for (col in numeric_names) {\ncat(“Column:”, col, “”) stats &lt;- compute_stats(mtcars[[col]]) print(stats) }",
     "crumbs": [
       "Assignment 1"
     ]

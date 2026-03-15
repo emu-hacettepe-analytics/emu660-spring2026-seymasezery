@@ -10,7 +10,8 @@ title: "Assignment 1"
 
 My first assignment has two parts.
 
-## (a)
+## (c)
+## Write a Custom Summary Function
 
 data(mtcars)
 compute_stats <- function(x) 
@@ -26,8 +27,16 @@ return(result)
 }
 compute_stats(mtcars$mpg)
 
-## (b)
-
-{{< https://www.youtube.com/watch?v=cUPtQEyaswM&t >}}
+## Applying the Function Using a Loop
+str(mtcars)
+colnames(mtcars)
+numeric_cols <- sapply(mtcars, is.numeric)
+numeric_names <- colnames(mtcars)[numeric_cols]
+ for (col in numeric_names) 
+{  
+ cat("Column:", col, "\n")
+stats <- compute_stats(mtcars[[col]])
+ print(stats) 
+}
 
 
