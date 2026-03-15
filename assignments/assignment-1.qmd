@@ -59,7 +59,7 @@ apply(mtcars, 2, compute_stats)
 ```
 ## (d)
 ```{r}
-install.packages("dslabs")
+#install.packages("dslabs")
 ```
 ```{r}
 library(dslabs)
