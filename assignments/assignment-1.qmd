@@ -11,7 +11,6 @@ title: "Assignment 1"
 My first assignment has two parts.
 
 ## (c)
-
 ## Write a Custom Summary Function
 ```{r}
 data(mtcars) 
@@ -32,8 +31,6 @@ compute_stats <- function(x) {
   return(result)
 }
 ```
-
-
 ## Applying the Function Using a Loop
 
 ```{r}
@@ -50,6 +47,36 @@ numeric_names <- names(mtcars)[numeric_cols]
  cat("Column:", col, "\n")
 stats <- compute_stats(mtcars[[col]])
  print(stats) 
+}
+```
+##An alternative approach with sapply and apply
+```{r}
+numeric_cols<-sapply(mtcars, is.numeric)
+sapply(mtcars[numeric_cols], compute_stats)
+```
+```{r}
+apply(mtcars, 2, compute_stats)
+```
+## (d)
+```{r}
+install.packages("dslabs")
+```
+```{r}
+library(dslabs)
+data(polls_us_election_2016)
+head(polls_us_election_2016)
+str(polls_us_election_2016)
+my_first<-"Seyma"
+my_birth_year<-1995
+k <- (nchar(my_first) + my_birth_year) %% 15 + 8
+```
+```{r}
+display_rows <- function(data, k) {
+  if (k %% 2 == 0) {
+    return(head(data, k))
+  } else {
+    return(tail(data, k))
+  }
 }
 ```
 
