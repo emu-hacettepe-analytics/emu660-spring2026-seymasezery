@@ -11,32 +11,16 @@ title: "Assignment 1"
 My first assignment has two parts.
 
 ## (c)
-## Write a Custom Summary Function
 
-data(mtcars)
-compute_stats <- function(x) 
-{ 
-result<-list( 
-mean = mean(x), 
-median = median(x), variance = var(x), 
-IQR = IQR(x), 
-minimum = min(x), 
-maximum = max(x) 
-) 
-return(result)
-}
-compute_stats(mtcars$mpg)
+## Write a Custom Summary Function
+```{r}
+data(mtcars) 
+head(mtcars) 
+```
+```{r}
+compute_stats \<- function(x) { result\<-list( mean = mean(x), median = median(x), variance = var(x), IQR = IQR(x), minimum = min(x), maximum = max(x) ) return(result) } compute_stats(mtcars\$mpg)
+```
 
 ## Applying the Function Using a Loop
-str(mtcars)
-colnames(mtcars)
-numeric_cols <- sapply(mtcars, is.numeric)
-numeric_names <- colnames(mtcars)[numeric_cols]
- for (col in numeric_names) 
-{  
- cat("Column:", col, "\n")
-stats <- compute_stats(mtcars[[col]])
- print(stats) 
-}
 
 
