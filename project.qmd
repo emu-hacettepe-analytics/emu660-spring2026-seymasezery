@@ -14,19 +14,33 @@ xxxxxx
 
 # 2. Data
 
-xxxxxx
+Global Fuel Prices & Economic Indicators (2020-2026)
+
+The global energy landscape has faced significant volatility between 2020 and 2026. This dataset provides a standardized, weekly record of retail fuel prices across 84 countries, aligned with global crude oil benchmarks and national fiscal indicators. It serves as a unified resource for analyzing the relationship between international commodity markets and local retail costs.
 
 ## 2.1 Data Source
 
-xxxxxx
+<https://www.kaggle.com/datasets/belbino/global-fuel-prices-20202026/data>
 
 ## 2.2 General Information About Data
 
-xxxxxx
+This dataset contains 27468 observations tracking the prices of Petrol, Diesel, and LPG. Each entry is enriched with regional, economic, and policy-level metadata to provide a holistic view of the global fuel economy.
+
+Temporal Coverage: Weekly data from January 2020 to April 2026.
+
+Global Scale: 84 countries across 7 geographic regions.
+
+Economic Context: Integrated Brent Crude benchmarks, tax percentages, and subsidy levels.
+
+Normalization: All pricing data is standardized to USD per Liter.
 
 ## 2.3 Reason of Choice
 
-xxxxxx
+This dataset was chosen because fuel prices are highly sensitive to global geopolitical events, particularly wars and conflicts. Recent events such as the Israel–Iran war have caused significant volatility in oil supply and Brent crude prices, leading to fluctuations in petrol, diesel, and LPG prices worldwide. Therefore, the dataset is suitable for analyzing how geopolitical instability affects fuel prices across countries, including Turkey.
+
+```{r}
+
+```
 
 ## 2.4 Preprocessing
 
@@ -55,3 +69,90 @@ xxxxxx
 # 4. Results and Key Takeaways
 
 xxxxxx
+
+```{r}
+global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
+```
+
+```{r}
+str(global_fuel_prices)
+```
+
+```{r}
+nrow(global_fuel_prices)
+```
+
+```{r}
+ncol(global_fuel_prices)
+```
+
+```{r}
+colSums(is.na(global_fuel_prices))
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+#Petrol zaman trendi
+global_fuel_prices|>ggplot(aes(x=date, y=petrol_usd_liter))+geom_line(color="blue")+xlab("Date")+ylab("USD per Liter")+ggtitle("Petrol Price Over Time")
+#Diesel zaman trendi
+global_fuel_prices|>ggplot(aes(x=date, y=diesel_usd_liter))+geom_line(color="red")+xlab("Date")+ylab("USD per Liter")+ggtitle("Diesel Price Over Time")
+#LPG zaman trendi
+global_fuel_prices|>ggplot(aes(x=date, y=lpg_usd_liter))+geom_line(color="green")+xlab("Date")+ylab("USD per Liter")+ggtitle("LPG Price Over Time")
+```
+
+```{r}
+global_fuel_prices |>
+  ggplot(aes(x = country, y = petrol_usd_liter)) +
+  geom_boxplot(fill = "lightblue") +
+  geom_point(position = position_jitter(width = 0.2), alpha = 0.4) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("country")+ylab("USD per Liter")+ggtitle("Petrol Prices by Country")
+```
+
+```{r}
+install.packages("dplyr")
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+install.packages("tidyverse")
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+```
+
+```{r}
+top_countries <- global_fuel_prices |>
+  group_by(country) |>
+  summarise(avg = mean(petrol_usd_liter, na.rm = TRUE)) |>
+  arrange(desc(avg)) |>
+  slice_head(n = 10) |>
+  pull(country)
+```
+
+```{r}
+global_fuel_prices|>filter(country %in% top_countries)|>
+  ggplot(aes(x = country, y = petrol_usd_liter)) +
+  geom_boxplot(fill = "lightblue") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("country")+ylab("USD per Liter")+ggtitle("Petrol Prices by Country")
+```
