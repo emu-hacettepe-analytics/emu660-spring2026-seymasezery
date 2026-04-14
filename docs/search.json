@@ -11,21 +11,21 @@
     "href": "project.html#data-source",
     "title": "Project X",
     "section": "2.1 Data Source",
-    "text": "2.1 Data Source\nxxxxxx"
+    "text": "2.1 Data Source\nhttps://www.kaggle.com/datasets/belbino/global-fuel-prices-20202026/data"
   },
   {
     "objectID": "project.html#general-information-about-data",
     "href": "project.html#general-information-about-data",
     "title": "Project X",
     "section": "2.2 General Information About Data",
-    "text": "2.2 General Information About Data\nxxxxxx"
+    "text": "2.2 General Information About Data\nThis dataset contains 27468 observations tracking the prices of Petrol, Diesel, and LPG. Each entry is enriched with regional, economic, and policy-level metadata to provide a holistic view of the global fuel economy.\nTemporal Coverage: Weekly data from January 2020 to April 2026.\nGlobal Scale: 84 countries across 7 geographic regions.\nEconomic Context: Integrated Brent Crude benchmarks, tax percentages, and subsidy levels.\nNormalization: All pricing data is standardized to USD per Liter."
   },
   {
     "objectID": "project.html#reason-of-choice",
     "href": "project.html#reason-of-choice",
     "title": "Project X",
     "section": "2.3 Reason of Choice",
-    "text": "2.3 Reason of Choice\nxxxxxx"
+    "text": "2.3 Reason of Choice\nThis dataset was chosen because fuel prices are highly sensitive to global geopolitical events, particularly wars and conflicts. Recent events such as the Israel–Iran war have caused significant volatility in oil supply and Brent crude prices, leading to fluctuations in petrol, diesel, and LPG prices worldwide. Therefore, the dataset is suitable for analyzing how geopolitical instability affects fuel prices across countries, including Turkey."
   },
   {
     "objectID": "project.html#preprocessing",

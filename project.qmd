@@ -71,6 +71,10 @@ xxxxxx
 xxxxxx
 
 ```{r}
+library(tidyverse)
+```
+
+```{r}
 global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
 ```
 
@@ -91,10 +95,6 @@ colSums(is.na(global_fuel_prices))
 ```
 
 ```{r}
-library(ggplot2)
-```
-
-```{r}
 #Petrol zaman trendi
 global_fuel_prices|>ggplot(aes(x=date, y=petrol_usd_liter))+geom_line(color="blue")+xlab("Date")+ylab("USD per Liter")+ggtitle("Petrol Price Over Time")
 #Diesel zaman trendi
@@ -110,34 +110,6 @@ global_fuel_prices |>
   geom_point(position = position_jitter(width = 0.2), alpha = 0.4) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   xlab("country")+ylab("USD per Liter")+ggtitle("Petrol Prices by Country")
-```
-
-```{r}
-install.packages("dplyr")
-```
-
-```{r}
-library(dplyr)
-```
-
-```{r}
-install.packages("tidyverse")
-```
-
-```{r}
-library(tidyverse)
-```
-
-```{r}
-Attaching package: ‘dplyr’
-
-The following objects are masked from ‘package:stats’:
-
-    filter, lag
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
 ```
 
 ```{r}
