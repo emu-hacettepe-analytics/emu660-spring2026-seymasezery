@@ -1,5 +1,11 @@
 ---
 title: "Analysis of Fuel Prices, 2020-2026"
+format: html
+
+toc: true
+
+code-fold: true
+code-summary: "Show Code"
 ---
 
 This is our project page.
@@ -20,9 +26,6 @@ The global energy landscape has faced significant volatility between 2020 and 20
 
 ```{r}
 global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
-```
-
-```{r}
 head(global_fuel_prices)
 ```
 
@@ -34,13 +37,13 @@ head(global_fuel_prices)
 
 This dataset contains 27468 observations tracking the prices of Petrol, Diesel, and LPG. Each entry is enriched with regional, economic, and policy-level metadata to provide a holistic view of the global fuel economy.
 
-\*\*Temporal Coverage:\*\* Weekly data from January 2020 to April 2026. 
+**Temporal Coverage:** Weekly data from January 2020 to April 2026. 
 
-\*\*Global Scale:\*\* 84 countries across 7 geographic regions.
+**Global Scale:** 84 countries across 7 geographic regions.
 
-\*\*Economic Context:\*\* Integrated Brent Crude benchmarks, tax percentages, and subsidy levels. 
+E**conomic Context:** Integrated Brent Crude benchmarks, tax percentages, and subsidy levels. 
 
-\*\*Normalization:\*\* All pricing data is standardized to USD per Liter.
+**Normalization:** All pricing data is standardized to USD per Liter.
 
 ## 2.3 Reason of Choice
 
@@ -51,8 +54,6 @@ This dataset was chosen because fuel prices are highly sensitive to global geopo
 The dataset obtained from Kaggle required minimal preprocessing, as it did not contain any missing values (NAs) or major data quality issues across its variables. The only necessary transformation involved the date variable, which was originally stored as a character type. In order to perform time series and trend analysis accurately, the date variable was converted into a proper Date format using the as.Date() function in R.
 
 # 3. Analysis
-
-xxxxxx
 
 ## 3.1 Exploratory Data Analysis
 
@@ -105,6 +106,42 @@ global_fuel_prices |>
 The sharp price increase observed in the chart in 2022 can be attributed to the tightening of global energy supplies following the Russia-Ukraine war. Similarly, the resurgence in prices seen at the end of 2025 and the beginning of 2026 can be attributed to the reflection of new geopolitical risks and supply uncertainties in the market. This situation demonstrates that fuel prices are highly sensitive not only to economic factors but also to geopolitical ones.
 
 ```{r}
+df <- global_fuel_prices |>
+  mutate(date = as.Date(date))
+
+df_long <- df |>
+  pivot_longer(
+    cols = c(petrol_usd_liter),
+    values_to = "price"
+  )
+
+trend_df <- df_long |>
+  group_by(date, region) |>
+  summarise(avg_price = mean(price, na.rm = TRUE), .groups = "drop")
+# =========================
+# 1. REGION PLOT
+# =========================
+
+p1 <- ggplot(trend_df,
+             aes(x = date,
+                 y = avg_price,
+                 color = region)) +
+  geom_line(linewidth = 1) +
+  facet_wrap(~region) +
+  labs(title = "Regional Petrol Price Trends (2020–2026)",
+       x = "Date",
+       y = "Average Price") +
+  theme_minimal()
+
+# =========================
+# 2. TURKEY PLOT
+# =========================
+
+df_turkey <- df |>
+  filter(country == "Turkey")
+```
+
+```{r}
 
 df <- global_fuel_prices |>
 mutate(date = as.Date(date),
@@ -132,12 +169,20 @@ theme_minimal()
 
 ## 3.3 Model Fitting
 
-xxxxxx
+If I were to perform model fitting, I would build a regression model to quantitatively measure how petrol, diesel, and LPG prices changed before and after the war periods in 2020–2026. In this model, the war periods (2022 and 2026) would be included as dummy variables to test whether price changes are statistically significant. Additionally, variables such as region and fuel type would be incorporated to compare how different regions and fuel types respond to these shocks. By using interaction terms, I would also examine whether the impact of the war differs across regions. This approach complements visual trend analysis by providing more causal and interpretable insights.
 
 ## 3.4 Results
 
-xxxxxx
+The exploratory analysis of global fuel prices between 2020 and 2026 reveals clear temporal and regional heterogeneity. Trend analysis shows that petrol prices exhibit a generally increasing pattern over time, with noticeable structural changes around major geopolitical events, particularly in 2022 and 2026. Regional breakdowns indicate that price trajectories differ significantly across continents, suggesting that fuel markets respond unevenly to global shocks.
+
+The impact analysis, based on pre- and post-war comparisons, demonstrates that fuel prices increased across almost all regions following the war periods. However, the magnitude of this effect varies by region and fuel type. Petrol generally shows stronger sensitivity to geopolitical shocks compared to LPG, while diesel exhibits intermediate behavior. Turkey appears among the more strongly affected countries in terms of petrol price increases, indicating relatively high exposure to global energy market volatility.
 
 # 4. Results and Key Takeaways
 
-xxxxxx
+-   Fuel prices show a clear upward trend between 2020 and 2026, with structural breaks around major geopolitical events.
+
+-   The 2022 and 2026 war periods are associated with observable increases in fuel prices across most regions.
+
+-   Petrol prices are more sensitive to geopolitical disruptions compared to LPG and diesel.
+
+-   Turkey is among the relatively more affected countries, showing higher-than-average price increases in the post-war period.
