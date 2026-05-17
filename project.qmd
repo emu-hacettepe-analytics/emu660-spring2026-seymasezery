@@ -24,7 +24,6 @@ Global Fuel Prices & Economic Indicators (2020-2026)
 
 The global energy landscape has faced significant volatility between 2020 and 2026. This dataset provides a standardized, weekly record of retail fuel prices across 84 countries, aligned with global crude oil benchmarks and national fiscal indicators. It serves as a unified resource for analyzing the relationship between international commodity markets and local retail costs.
 
-
 ```{r setup, include=FALSE}
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(dplyr))
@@ -34,6 +33,7 @@ head(global_fuel_prices)
 library(tidyverse)
 library(dplyr)
 ```
+
 ## 2.1 Data Source
 
 \[Click for Data\](<https://www.kaggle.com/datasets/belbino/global-fuel-prices-20202026/data)%7B.btn> .btn-dark}
@@ -63,9 +63,10 @@ The dataset obtained from Kaggle required minimal preprocessing, as it did not c
 ## 3.1 Exploratory Data Analysis
 
 ```{r}
-library(tidyverse)
-library(dplyr)
+global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
+library(tidyr)
 library(ggplot2)
+library(dplyr)
 df_rank <- global_fuel_prices |>
 group_by(country, region) |>
 summarise(avg_petrol = mean(petrol_usd_liter, na.rm = TRUE),
@@ -111,6 +112,10 @@ global_fuel_prices |>
 The sharp price increase observed in the chart in 2022 can be attributed to the tightening of global energy supplies following the Russia-Ukraine war. Similarly, the resurgence in prices seen at the end of 2025 and the beginning of 2026 can be attributed to the reflection of new geopolitical risks and supply uncertainties in the market. This situation demonstrates that fuel prices are highly sensitive not only to economic factors but also to geopolitical ones.
 
 ```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
 df <- global_fuel_prices |>
   mutate(date = as.Date(date))
 
@@ -123,10 +128,10 @@ df_long <- df |>
 trend_df <- df_long |>
   group_by(date, region) |>
   summarise(avg_price = mean(price, na.rm = TRUE), .groups = "drop")
+
 # =========================
 # 1. REGION PLOT
 # =========================
-
 p1 <- ggplot(trend_df,
              aes(x = date,
                  y = avg_price,
@@ -141,13 +146,33 @@ p1 <- ggplot(trend_df,
 # =========================
 # 2. TURKEY PLOT
 # =========================
-
 df_turkey <- df |>
   filter(country == "Turkey")
+
+turkey_trend <- df_turkey |>
+  group_by(date) |>
+  summarise(avg_price = mean(petrol_usd_liter, na.rm = TRUE), .groups = "drop")
+
+p2 <- ggplot(turkey_trend,
+             aes(x = date, y = avg_price)) +
+  geom_line(linewidth = 1.3, color = "red") +
+  labs(title = "Turkey Petrol Price Trend (2020–2026)",
+       x = "Date",
+       y = "Price (USD/Liter)") +
+  theme_minimal()
+
+# =========================
+# PRINT BOTH (CRITICAL PART)
+# =========================
+
+p1
+p2
 ```
 
 ```{r}
-
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 df <- global_fuel_prices |>
 mutate(date = as.Date(date),
 period = ifelse(date < as.Date("2022-02-01"), "Pre-War", "Post-War"))
