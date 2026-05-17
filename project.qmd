@@ -20,15 +20,20 @@ Additionally, we aim to analyze the trend of fuel prices in Turkey between 2020 
 
 # 2. Data
 
-Global Fuel Prices & Economic Indicators (2020-2026) 
+Global Fuel Prices & Economic Indicators (2020-2026)
 
 The global energy landscape has faced significant volatility between 2020 and 2026. This dataset provides a standardized, weekly record of retail fuel prices across 84 countries, aligned with global crude oil benchmarks and national fiscal indicators. It serves as a unified resource for analyzing the relationship between international commodity markets and local retail costs.
 
-```{r}
-global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
-head(global_fuel_prices)
-```
 
+```{r setup, include=FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
+global_fuel_prices <- read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
+head(global_fuel_prices)
+
+library(tidyverse)
+library(dplyr)
+```
 ## 2.1 Data Source
 
 \[Click for Data\](<https://www.kaggle.com/datasets/belbino/global-fuel-prices-20202026/data)%7B.btn> .btn-dark}
@@ -37,11 +42,11 @@ head(global_fuel_prices)
 
 This dataset contains 27468 observations tracking the prices of Petrol, Diesel, and LPG. Each entry is enriched with regional, economic, and policy-level metadata to provide a holistic view of the global fuel economy.
 
-**Temporal Coverage:** Weekly data from January 2020 to April 2026. 
+**Temporal Coverage:** Weekly data from January 2020 to April 2026.
 
 **Global Scale:** 84 countries across 7 geographic regions.
 
-E**conomic Context:** Integrated Brent Crude benchmarks, tax percentages, and subsidy levels. 
+**Economic Context:** Integrated Brent Crude benchmarks, tax percentages, and subsidy levels.
 
 **Normalization:** All pricing data is standardized to USD per Liter.
 
