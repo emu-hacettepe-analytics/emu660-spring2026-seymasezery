@@ -19,15 +19,11 @@ Global Fuel Prices & Economic Indicators (2020-2026) 
 The global energy landscape has faced significant volatility between 2020 and 2026. This dataset provides a standardized, weekly record of retail fuel prices across 84 countries, aligned with global crude oil benchmarks and national fiscal indicators. It serves as a unified resource for analyzing the relationship between international commodity markets and local retail costs.
 
 ```{r}
-head(global_fuel_prices)
-```
-
-```{r}
-library(tidyverse)
-```
-
-```{r}
 global_fuel_prices<-read.csv("/Users/seymasezer/Desktop/emu660-spring2026-seymasezery/global_fuel_prices_2020_2026.csv")
+```
+
+```{r}
+head(global_fuel_prices)
 ```
 
 ## 2.1 Data Source
@@ -61,6 +57,7 @@ xxxxxx
 ## 3.1 Exploratory Data Analysis
 
 ```{r}
+library(tidyverse)
 library(dplyr)
 library(ggplot2)
 df_rank <- global_fuel_prices |>
@@ -108,9 +105,6 @@ global_fuel_prices |>
 The sharp price increase observed in the chart in 2022 can be attributed to the tightening of global energy supplies following the Russia-Ukraine war. Similarly, the resurgence in prices seen at the end of 2025 and the beginning of 2026 can be attributed to the reflection of new geopolitical risks and supply uncertainties in the market. This situation demonstrates that fuel prices are highly sensitive not only to economic factors but also to geopolitical ones.
 
 ```{r}
-library(dplyr)
-library(tidyr)
-library(ggplot2)
 
 df <- global_fuel_prices |>
 mutate(date = as.Date(date),
@@ -147,19 +141,3 @@ xxxxxx
 # 4. Results and Key Takeaways
 
 xxxxxx
-
-```{r}
-str(global_fuel_prices)
-```
-
-```{r}
-nrow(global_fuel_prices)
-```
-
-```{r}
-ncol(global_fuel_prices)
-```
-
-```{r}
-colSums(is.na(global_fuel_prices))
-```
